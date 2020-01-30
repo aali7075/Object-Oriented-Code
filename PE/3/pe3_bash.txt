@@ -1,0 +1,51 @@
+1. What is the bash command to show your terminal's working directory (current location)?
+pwd
+
+2. How would you create an empty file called empty.txt from the command line?
+touch empty.txt
+
+3. Using the ls command, how would you list all files beginning with empty in your current directory?
+ls *empty*
+
+
+4. Using the ls command, the wc command, and the |, how would you count the number of files ending in .txt in your current directory?
+ls -l  | grep ^- | wc -l
+
+5. Using the echo command and > or >>, what is the command to write your name to empty.txt?
+
+echo "Aaron Li" > empty.txt
+
+6. What is the bash command to rename that file to notempty.txt?
+mv empty.txt notempty.txt
+
+7. What is the bash command to create a directory named pe3_bash?
+mkdir pe3_bash
+
+8. What is the command to move your terminal's working directory to pe3_bash?
+cd pe3_bash/
+
+9.  From the pe3_bash directory, how would you create a new directory, pe3_bash_number2 that has the same parent directory as pe3_bash?
+mkdir ../pe3_bash_number2
+
+10. What is the command to move from pe3_bash to pe3_bash_number2 (use only one command)?
+cd ../pe3_bash_number2/
+
+11. What does pressing the up arrow key do?
+Moves through the bash command history
+
+12. What does pressing the down arrow key do?
+Moves through the bash command history but in reverse
+
+13. What does pressing ctrl+r do?
+Goes through and searches the command history. Searches by typing numbers
+
+14. Using nano as text editor
+  1. What command do you use to open a file with this editor?
+    nano filename
+  2. What command do you use to save a file while using this editor?
+    ctrl-o
+  3. What common do you use to exit
+    ctrl-x
+
+15. What are two reasons you might want to use the text editors list above?
+It is quicker to access using terminal and has more built-in support with Ubuntu
