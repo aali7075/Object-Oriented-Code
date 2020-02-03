@@ -18,17 +18,17 @@ void intOut(const int &val, int * val_out){
 }
 
 // Create custome classes
-class PointOveride {
+class Point {
   public:
     Point(int x, int y){ // constructor
       x_=x;
       y_=y;
-    };
-    // Override functions
-    bool operator==(const PointOveride & p2){
-       return (x_=p2.x_&& y_ =p2.y_);
     }
-    Object operator+(const Object & p2){
+    // Override functions
+    bool operator==(const Point & p2){
+       return (x_==p2.x_&& y_ ==p2.y_);
+    }
+    Point operator+(const Point & p2){
       return Point((x_+p2.x_),(y_+p2.y_));
 
 
@@ -138,4 +138,10 @@ int main() {
     // hint: for operator+, the function signature when implemented as a member function of the Object class is:
     // Object operator+(const Object &other)
     // Answer:
+    Point p1= Point(3,4);
+    Point p2= Point(3,4);
+    std::cout <<"p1 and p2 x value are " <<p1.get_x() <<" y values are " <<p1.get_y()<<'\n';
+    std::cout <<"p1==p2 returns "<<(p1==p2) << '\n';
+    Point p3=p1+p2;
+    std::cout <<"p3 x value is " <<p3.get_x() <<" y is " <<p3.get_y()<<'\n';
 }

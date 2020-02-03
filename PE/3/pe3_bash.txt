@@ -1,3 +1,5 @@
+Name: Aaron Li
+
 1. What is the bash command to show your terminal's working directory (current location)?
 pwd
 
