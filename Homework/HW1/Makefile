@@ -4,7 +4,7 @@ CXXFLAGS	= -std=c++17 -Wall
 all: maze
 
 clean:
-	rm Player.o Maze.o Boards.o maze
+	rm Player.o Maze.o Board.o maze
 
 maze: Player.o Maze.o Board.o main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp Player.o Maze.o Board.o -o maze

@@ -3,6 +3,8 @@
 
 #include <vector>
 #include "Player.h"
+#include <iostream>
+#include <time.h>
 
 // you may change this enum as you need
 enum class SquareType { Wall, Exit, Empty, Human, Enemy, Treasure };

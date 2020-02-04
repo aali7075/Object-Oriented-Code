@@ -16,4 +16,6 @@ aaron.SetPosition(Position{4,5});
 
 std::cout << aaron.get_name() << " "<< aaron.get_points()<<'\n';
 std::cout << aaron.ToRelativePosition(Position{-8,-9}) << '\n';
+
+Board test=Board();
 }
