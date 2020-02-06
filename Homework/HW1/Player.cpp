@@ -52,3 +52,10 @@ std:: string Player:: ToRelativePosition(Position other){
   return pos_description;
 
 }
+
+/**
+Overide the cout operator for player
+*/
+std::ostream& operator<<(std::ostream& ouput, const Player& player){
+  std::cout<<player.name_<<" "<<player.points_;
+}

@@ -38,6 +38,7 @@ public:
 	std::string ToRelativePosition(Position other);
 
  // Either override operator<< for Player or implement the following function
+ friend std::ostream& operator<<(std::ostream& ouput, const Player& player);
 	// Convert this player to a string representation of their name and points
 	//std::string Stringify();
 
