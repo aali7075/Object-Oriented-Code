@@ -9,16 +9,27 @@ The walls have a 20% chance of being spawned from square not on player or exit
 Treasure has a 10% chance of being spawned on a location that is not a walls
 */
 Board::Board(){
-  int board_len=sizeof(arr_)/sizeof(arr_[0]);
   bool wall_prob;
   bool treasure_prob;
+  bool good_treasure_prob;
+  bool best_treasure_prob;
   srand(time(NULL)); // en
-  for(int i=0; i<board_len; i++){
-    for(int j=0; j<board_len; j++){ // The board is always square
+  for(int i=0; i<4; i++){
+    for(int j=0; j<4; j++){ // The board is always square
       wall_prob=(rand()%100)<20;
       treasure_prob=(rand()%100)<10;
       if(!wall_prob && treasure_prob){ // If wall is false and treasure is true place on treasure
+        good_treasure_prob=rand()%100<50; //Generator functions from good and best treaures
+        best_treasure_prob=rand()%100<10;
+        if(good_treasure_prob){
+          arr_[i][j]=SquareType::Good_Treasure;
+        }
+        else if(best_treasure_prob){
+          arr_[i][j]=SquareType::Best_Treasure;
+        }
+        else{
         arr_[i][j]=SquareType::Treasure;
+        }
       }
       else if(wall_prob){
         arr_[i][j]=SquareType::Wall;
@@ -29,20 +40,48 @@ Board::Board(){
     }
   }
   arr_[0][0]=SquareType::Human; // Humans and exit must happen so assigned values at the end
-  arr_[board_len-1][board_len-1]=SquareType::Exit;
+  arr_[3][3]=SquareType::Exit;
 
 }
 /**
-ASK ABOUT THIS
+SquareTypeStringify will take a SquareType and give it the corresponding emoji
+Input parameters:
+sq is the square that will be converted to corresponding emoji
+*/
+std::string SquareTypeStringify(SquareType sq){
+  std::string wall= "\U0001F6AB"; //Unicode for emoji
+  std::string exit = "\U0001F697";
+  std::string empty= "\U00002B1C";
+  std::string human= "\U0001F628";
+  std::string treasure= "\U0001F4B5";
+  std::string good_treasure= "\U0001F4B8";
+  std::string best_treasure= "\U0001F4B0";
+  std::string enemy= "\U0001F479";
+
+  switch(sq){ //Use a switch case for simplicity
+    case SquareType::Wall : return wall;
+    case SquareType::Exit : return exit;
+    case SquareType::Empty : return empty;
+    case SquareType::Human : return human;
+    case SquareType::Treasure : return treasure;
+    case SquareType::Good_Treasure : return good_treasure;
+    case SquareType::Best_Treasure : return best_treasure;
+    case SquareType::Enemy : return enemy;
+    default : return "Not an SquareType value";
+  }
+}
+
+/**
+Override the cout operator for board and print the "UI" for the Board
+Call SquareTypeStringify and after after each row create a new line
 */
 std::ostream& operator<<(std::ostream& os, const Board &b){
   for(int i=0; i<4; i++){
     for(int j=0; j<4; j++){
-      int enum_val= static_cast<int>(b.arr_[i][j]);
-      std::cout <<"Board at " +std::to_string(i) +" "+ std::to_string(j) +" is "<<b.Square_name_[enum_val] <<'\n';
+      std::cout<<SquareTypeStringify(b.arr_[i][j])<<" ";
     }
+    std::cout << '\n';
   }
-  std::cout << "";
 }
 
 /**
@@ -89,7 +128,7 @@ std::vector<Position> Board::GetMoves(Player *p){
   SquareType left=arr_copy[row+1][col];
   std::vector<SquareType> directions{up,down,right,left};
   for(int i=3; i>-1; i--){ // Since we are deleting positions we need  to start from end otherwise well get a seg fault
-    if(directions[i]==SquareType::Wall || directions[i]==SquareType::Enemy){
+    if(directions[i]==SquareType::Wall){
       moves.erase(moves.begin()+i); // Erase any position that has a wall or enemy
     }
   }
@@ -108,17 +147,35 @@ Call the GetMoves function on player and then check if position is inside the po
 If it is  move the player and return true, otherwise return false
 */
 bool Board::MovePlayer(Player *p, Position pos){
-  std::vector<Position> moves= GetMoves(p); // Why do I not need to pass in a mememory adress?
-  Position player_old_pos=p->get_position(); // When do I use dot and when do I use ->
-  int moves_size=moves.size();
-  Position moves_pos;
+  std::vector<Position> moves= GetMoves(p);
+  Position player_old_pos=p->get_position(); // Store players position before they move
+  int moves_size=moves.size(); // Intailize size outside of for loop for effciecny
+  SquareType new_pos_type; //Used to check treaures
   for(int i=0; i<moves_size; i++){
-    moves_pos= moves[i];
-    std::cout << moves_pos.row <<" " <<moves_pos.col<<'\n';
-    if (moves_pos.row==pos.row && moves_pos.col==pos.col){
-      SetSquareValue(player_old_pos, SquareType::Empty);
-      SetSquareValue(pos, SquareType::Human);
+    if (moves[i]==pos){ // If chosen position is one of the positions from GetMoves
       p->SetPosition(pos);
+      new_pos_type=get_square_value(pos);
+      switch(new_pos_type){ // FOR PART 2 OF CREATING 2 NEW TREASURES
+        case SquareType::Treasure:
+          p->ChangePoints(100);
+          std::cout << p->get_name()+ " got 100 Points!" << '\n';
+        case SquareType::Good_Treasure:
+          p->ChangePoints(200);
+          std::cout << p->get_name()+ " got 200 Points!" << '\n';
+        case SquareType::Best_Treasure:
+          p->ChangePoints(500);
+          std::cout << p->get_name()+ " got 500 Points!" << '\n';
+      }
+      if(p->is_human()){
+        SetSquareValue(pos, SquareType::Human);
+      }
+      else{
+        SetSquareValue(pos, SquareType::Enemy);
+      }
+      SetSquareValue(player_old_pos, SquareType::Empty);
+      if(player_old_pos==Position{3,3} && !(p->is_human())){ // If enemy is on exit change square type back to exit
+        SetSquareValue(Position{3,3}, SquareType::Exit);
+      }
       return true;
     }
   }
@@ -127,7 +184,6 @@ bool Board::MovePlayer(Player *p, Position pos){
 
 /**
 GetExitOccupant will check if the human is at the exit
-
 Call the get_square_value method on the exit square which is always 3,3
 */
 SquareType Board::GetExitOccupant(){

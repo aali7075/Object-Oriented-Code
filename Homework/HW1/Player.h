@@ -49,6 +49,7 @@ private:
 	int points_;
 	Position pos_;
 	bool is_human_;
+	int enemy_count;
 
 	// You may add other fields as needed
 

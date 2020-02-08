@@ -8,7 +8,7 @@
 #include <string>
 
 // you may change this enum as you need
-enum class SquareType { Wall, Exit, Empty, Human, Enemy, Treasure };
+enum class SquareType { Wall, Exit, Empty, Human, Enemy, Treasure, Good_Treasure, Best_Treasure };
 
 // TODO: implement
 // this function should return a string representation of a given SquareType
@@ -46,7 +46,6 @@ public:
 
 private:
 	SquareType arr_[4][4];
-	std::vector<std::string> Square_name_ = {"Wall", "Exit", "Empty", "Human", "Enemy", "Treasure"};
 	int rows_; // might be convenient but not necessary
 	int cols_;
 	// you may add more fields, as needed

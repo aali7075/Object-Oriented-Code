@@ -28,26 +28,27 @@ void Player::SetPosition(Position pos){
   pos_=pos;
 }
 /**
-Gives the
+Gives the Relative Position from the Player.
+Since the player will only be able to go up, down, left, or right, at one time
+Only print one of those directions
 Input parameters:
-x determines how much points_ will be changed
+other is a Position and is compared to the players position
 */
 std:: string Player:: ToRelativePosition(Position other){
   std::string pos_description;
   int col_direct= other.col-pos_.col;
   int row_direct= other.row-pos_.row ;
-  if(row_direct>=0){
-    pos_description+="right "+std::to_string(abs(row_direct));
+  if(row_direct<0){
+    pos_description+="UP";
+  }
+  else if (row_direct> 0){
+    pos_description+="DOWN";
+  }
+  else if (col_direct>0){
+    pos_description+="RIGHT";
   }
   else{
-    pos_description+="left "+std::to_string(abs(row_direct));
-  }
-  pos_description+=" ";
-  if(col_direct>=0){
-    pos_description+="up "+std::to_string(abs(col_direct));
-  }
-  else{
-    pos_description+="down "+std::to_string(abs(col_direct));
+    pos_description+="LEFT";
   }
   return pos_description;
 
