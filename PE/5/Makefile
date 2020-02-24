@@ -14,5 +14,5 @@ test: Rectangle.o test.cpp
 cov: Rectangle.o test.cpp
 	$(CXX) $(CXXFLAGS) $(CXXTESTFLAGS) test.cpp Rectangle.o -o test
 
-#Rectangle.o: Rectangle.cpp
-#	$(CXX) $(CXXFLAGS) -c Rectangle.cpp
+Rectangle.o: Rectangle.cpp
+	$(CXX) $(CXXFLAGS) -c Rectangle.cpp
