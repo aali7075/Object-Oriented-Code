@@ -1,0 +1,624 @@
+What kind of election should we have (direct or representative, 0 to stop)? direct
+Do you want to register a candidate for party one (y or n)? y
+What is their name? Spongebob
+Do you want to register a candidate for party one (y or n)? n
+Do you want to register a candidate for party two (y or n)? y
+What is their name? Patrick
+Do you want to register a candidate for party two (y or n)? n
+Do you want to register a candidate for party three (y or n)? n
+
+District 1:
+square miles: 8
+[Party: one] : 6	[Party: two] : 4	[Party: three] : 9	[Party: none] : 2	
+
+District 2:
+square miles: 5
+[Party: one] : 5	[Party: two] : 3	[Party: three] : 3	[Party: none] : 5	
+
+District 3:
+square miles: 18
+[Party: one] : 8	[Party: two] : 8	[Party: three] : 1	[Party: none] : 1	
+
+-----------------
+1: Spongebob [Party: one]
+2: Patrick [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 1
+District 1:
+square miles: 8
+[Party: one] : 6	[Party: two] : 4	[Party: three] : 9	[Party: none] : 2	
+
+District 2:
+square miles: 5
+[Party: one] : 5	[Party: two] : 3	[Party: three] : 3	[Party: none] : 5	
+
+District 3:
+square miles: 18
+[Party: one] : 8	[Party: two] : 8	[Party: three] : 1	[Party: none] : 1	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Spongebob is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to one!
+District 1:
+square miles: 8
+[Party: one] : 6	[Party: two] : 4	[Party: three] : 9	[Party: none] : 2	
+
+District 2:
+square miles: 5
+[Party: one] : 6	[Party: two] : 3	[Party: three] : 3	[Party: none] : 4	
+
+District 3:
+square miles: 18
+[Party: one] : 8	[Party: two] : 8	[Party: three] : 1	[Party: none] : 1	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Spongebob is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to one!
+District 1:
+square miles: 8
+[Party: one] : 6	[Party: two] : 4	[Party: three] : 9	[Party: none] : 2	
+
+District 2:
+square miles: 5
+[Party: one] : 7	[Party: two] : 3	[Party: three] : 3	[Party: none] : 3	
+
+District 3:
+square miles: 18
+[Party: one] : 8	[Party: two] : 8	[Party: three] : 1	[Party: none] : 1	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Spongebob is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to one!
+District 1:
+square miles: 8
+[Party: one] : 6	[Party: two] : 4	[Party: three] : 9	[Party: none] : 2	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 3	[Party: three] : 3	[Party: none] : 2	
+
+District 3:
+square miles: 18
+[Party: one] : 8	[Party: two] : 8	[Party: three] : 1	[Party: none] : 1	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Spongebob is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to one!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 4	[Party: three] : 9	[Party: none] : 1	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 3	[Party: three] : 3	[Party: none] : 2	
+
+District 3:
+square miles: 18
+[Party: one] : 8	[Party: two] : 8	[Party: three] : 1	[Party: none] : 1	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 3
+Spongebob is campaigning in district 3
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to one!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 4	[Party: three] : 9	[Party: none] : 1	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 3	[Party: three] : 3	[Party: none] : 2	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 0
+-----------------
+1: Spongebob [Party: one]
+2: Patrick [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 2
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 4	[Party: three] : 9	[Party: none] : 1	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 3	[Party: three] : 3	[Party: none] : 2	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Patrick is campaigning in district 1
+Chances to convert: 78.125000
+Chances to convert from another party: 7.812500
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 4	[Party: three] : 9	[Party: none] : 1	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 3	[Party: three] : 3	[Party: none] : 2	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Patrick is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to two!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 4	[Party: three] : 9	[Party: none] : 1	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 4	[Party: three] : 3	[Party: none] : 1	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Patrick is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Congrats, you have converted someone from none to two!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 4	[Party: three] : 9	[Party: none] : 1	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Patrick is campaigning in district 1
+Chances to convert: 78.125000
+Chances to convert from another party: 7.812500
+Congrats, you have converted someone from none to two!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Patrick is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 0
+-----------------
+1: Spongebob [Party: one]
+2: Patrick [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 0
+District: 2
+Spongebob: 11
+Patrick: 5
+District: 3
+Spongebob: 10
+Patrick: 8
+District: 1
+Spongebob: 13
+Patrick: 8
+
+Full results: 
+Spongebob: 34
+Patrick: 21
+
+Congratulations, Spongebob, you've won!
+What kind of election should we have (direct or representative, 0 to stop)? representative
+Do you want to register a candidate for party one (y or n)? y
+What is their name? Bart Simpson
+Do you want to register a candidate for party one (y or n)? Do you want to register a candidate for party one (y or n)? y
+What is their name? Milhouse
+Do you want to register a candidate for party one (y or n)? n
+Do you want to register a candidate for party two (y or n)? 
+y
+What is their name? Apu
+Do you want to register a candidate for party two (y or n)? n
+Do you want to register a candidate for party three (y or n)? n
+
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+-----------------
+1: Bart [Party: one]
+2: Milhouse [Party: one]
+3: Apu [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 1
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Bart is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 9	[Party: two] : 8	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 3
+Bart is campaigning in district 3
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+Congrats, you have converted someone from two to one!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 3
+Bart is campaigning in district 3
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Bart is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Bart is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+Congrats, you have converted someone from two to one!
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 9	[Party: two] : 4	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 0
+-----------------
+1: Bart [Party: one]
+2: Milhouse [Party: one]
+3: Apu [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 2
+District 1:
+square miles: 8
+[Party: one] : 7	[Party: two] : 5	[Party: three] : 9	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 9	[Party: two] : 4	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Milhouse is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+Congrats, you have converted someone from three to one!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 9	[Party: two] : 4	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Milhouse is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 9	[Party: two] : 4	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Milhouse is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 9	[Party: two] : 4	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Milhouse is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 9	[Party: two] : 4	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Milhouse is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+Congrats, you have converted someone from two to one!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 10	[Party: two] : 3	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Milhouse is campaigning in district 2
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 10	[Party: two] : 3	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 0
+-----------------
+1: Bart [Party: one]
+2: Milhouse [Party: one]
+3: Apu [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 3
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 10	[Party: two] : 3	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 1
+Apu is campaigning in district 1
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 10	[Party: two] : 3	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 2
+Apu is campaigning in district 2
+Chances to convert: 98.461538
+Chances to convert from another party: 9.846154
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 10	[Party: two] : 3	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 3
+Apu is campaigning in district 3
+Chances to convert: 100.000000
+Chances to convert from another party: 10.000000
+Sorry, no one in none to convert!
+District 1:
+square miles: 8
+[Party: one] : 8	[Party: two] : 5	[Party: three] : 8	[Party: none] : 0	
+
+District 2:
+square miles: 5
+[Party: one] : 10	[Party: two] : 3	[Party: three] : 3	[Party: none] : 0	
+
+District 3:
+square miles: 18
+[Party: one] : 10	[Party: two] : 7	[Party: three] : 1	[Party: none] : 0	
+
+
+Where is this candidate campaigning (id) (0 to stop) ? 0
+-----------------
+1: Bart [Party: one]
+2: Milhouse [Party: one]
+3: Apu [Party: two]
+
+
+Which candidate is campaigning (id) (0 to stop) ? 0
+District: 2
+Bart: 4
+District: 3
+Bart: 4
+District: 1
+Milhouse: 5
+
+Full results: 
+Bart: 8
+Milhouse: 5
+
+Congratulations, Bart, you've won!
+What kind of election should we have (direct or representative, 0 to stop)? 0
