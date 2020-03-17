@@ -2,7 +2,9 @@
 
 
 
-
+/**
+Create a vector to help go through the enum Class
+*/
 std::vector<Parties> enum_to_vec(){
   std::vector<Parties> enum_vec;
   enum_vec.push_back(Parties::Pancakes);
@@ -13,7 +15,9 @@ std::vector<Parties> enum_to_vec(){
   return enum_vec;
 }
 
-
+/**
+Create a helper function that will convert enum to a string
+*/
 std::string enum_to_string(Parties type) {
    switch(type) {
       case Parties::Pancakes:
@@ -28,7 +32,11 @@ std::string enum_to_string(Parties type) {
 }
 
 
-
+/**
+District constructor()
+Will randomly generate a district with sqaure miles between 5 to 29
+Also randomly gerenate from 0 to 9 constituents per party
+*/
 District::District(){
       square_miles_=rand()%25+5;
       std::vector<Parties> enum_vec=enum_to_vec();
@@ -40,13 +48,20 @@ District::District(){
 }
 
 
+/**
+Campaign()
+Will change one person per party if the probability is right.
+Probability calculated by an equation.
+The probability of moving someone from a person of a differrent party is 10 times lower
+than if there is no party affilation
+*/
 void District::Campaign(Parties party){
     int party_constituents= constituents_[party];
     int other_constituents=0; // All constituents_ exlcuding chosen party and none party
     bool conversion;
     float prob;
     for(std::map<Parties,int>::iterator it = constituents_.begin(); it != constituents_.end(); ++it){
-      if(it->first==party || it->first==Parties::No_Party){
+      if(it->first==party || it->first==Parties::No_Party){ //we don't want to count no party or same party
         continue;
       }
       other_constituents+=it->second;
@@ -62,11 +77,11 @@ void District::Campaign(Parties party){
         continue;
       }
       else if(it->first==Parties::No_Party){
-        conversion=(it->second * prob*100 >rand()%100);
+        conversion=(it->second * prob*100 >rand()%100); //conversion for no party
 
       }
       else{
-      conversion=(it->second * prob*10>rand()%100);
+      conversion=(it->second * prob*10>rand()%100); //conversion for party
     }
       if(conversion){
         std::cout << "Congrats, you have converted someone from " << enum_to_string(it->first);
@@ -76,6 +91,10 @@ void District::Campaign(Parties party){
       }
     }
 }
+
+/**
+Helper function to make no party constiuents move to majoirty easier
+*/
 
 void District::ChangeNoParty(Parties party){
   constituents_[party]+= constituents_[Parties::No_Party];
