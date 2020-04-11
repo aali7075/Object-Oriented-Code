@@ -4,135 +4,274 @@ Aaron Li
 
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
-
-#include "Rectangle.h"
-
-
-// TEST_CASE ( "Factorials are computed", "[factorial]") {
-//   REQUIRE( Factorial(2) == 2 );
-//   REQUIRE( Factorial(3) == 6 );
-// }
-
-TEST_CASE ( "Rectangle constructor", "[rectangle]") {
-  Rectangle r=Rectangle(Point{1,5},Point{-1,-3});
-  Rectangle line_x=Rectangle(Point{6,5},Point{1,5});
-  Rectangle line_y=Rectangle(Point{1,4},Point{1,2});
-  Rectangle point=Rectangle(Point{1,5},Point{1,5});
+#include "Counter.hpp"
 
 
-  REQUIRE( r.get_p1().x<=r.get_p2().x);
-  REQUIRE(r.get_p1().y<=r.get_p2().y);
+std::vector<int> ints{1,1,1,2,3,4,5,3};
+std::vector<std::string> animals{"cat", "cat", "dog", "bird", "fish"};
+std::vector<char> chars{'a','a','a','b','c','d'};
+std::vector<double> dub{1.0,1.0,1.0,2.0,3.0,4.0,5.0,3.0};
+std::vector<bool> bools{true,true,true,false,false};
 
-  REQUIRE( line_x.get_p1().x<=line_x.get_p2().x);
-  REQUIRE(line_x.get_p1().y<=line_x.get_p2().y);
 
-  REQUIRE( line_y.get_p1().x<=line_y.get_p2().x);
-  REQUIRE(line_y.get_p1().y<=line_y.get_p2().y);
+TEST_CASE ( "Counter constructor", "[Counter]") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
 
-  REQUIRE( point.get_p1().x<=point.get_p2().x);
-  REQUIRE(point.get_p1().y<=point.get_p2().y);
-
-  SECTION( "Checking the width the rectangle" ){
-    REQUIRE(r.GetWidth()==2);
-    REQUIRE(line_x.GetWidth()==5);
-    REQUIRE(line_y.GetWidth()==0);
-    REQUIRE(point.GetWidth()==0);
-
+  SECTION("Using ints"){
+    REQUIRE(int_map->Count()==8);
+  }
+  SECTION("Using strings"){
+    REQUIRE(animals_map->Count()==5);
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->Count()==6);
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->Count()==8);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Count()==5);
   }
 
-  SECTION( "Checking the height the rectangle" ){
-    REQUIRE(r.GetHeight()==8);
-    REQUIRE(line_x.GetHeight()==0);
-    REQUIRE(line_y.GetHeight()==2);
-    REQUIRE(point.GetHeight()==0);
+}
 
+TEST_CASE ( "Count specfic key") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
+  SECTION("Using ints"){
+    REQUIRE(int_map->Count(1)==3);
   }
-  SECTION( "Checking for point overlap" ){
-    Rectangle r_test=Rectangle(Point{-1,6},Point{1,10});
-    r=Rectangle(Point{-1,-3},Point{1,5});
-    line_x=Rectangle(Point{0,5},Point{1,5});
-    line_y=Rectangle(Point{1,5},Point{1,8});
-    point=Rectangle(Point{-4,-6},Point{-1,-3});
-    REQUIRE(r.Overlaps(r)==true);
-    REQUIRE(r.Overlaps(line_x)==true);
-    REQUIRE(r.Overlaps(line_y)==true);
-    REQUIRE(r.Overlaps(point)==true);
-    REQUIRE(r.Overlaps(r_test)==false);
-
-
+  SECTION("Using strings"){
+    REQUIRE(animals_map->Count("cat")==2);
   }
-  SECTION( "Checking the area of each cirle" ){
-    REQUIRE(r.CalculateArea()==16);
-    REQUIRE(line_x.CalculateArea()==0);
-    REQUIRE(line_y.CalculateArea()==0);
-    REQUIRE(point.CalculateArea()==0);
+  SECTION("Using char"){
+    REQUIRE(char_map->Count('a')==3);
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->Count(3.0)==2);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Count(true)==3);
   }
 
-  // // moves the bottom left coordinate down one and to the left one
-  // // moves the upper right coordinate up one and to the right one
-  r=Rectangle(Point{0,7},Point{3,9});
-  SECTION( "Checking the expand" ){
-    r.Expand();
-    REQUIRE(r.get_p1().x==-1);
-    REQUIRE(r.get_p1().y==6);
-    REQUIRE(r.get_p2().x==4);
-    REQUIRE(r.get_p2().y==10);
-    REQUIRE(r.GetWidth()*r.GetHeight()==20);
+}
 
+TEST_CASE ( "Count through range") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
 
-    line_x.Expand();
-    REQUIRE(line_x.get_p1().x==0);
-    REQUIRE(line_x.get_p1().y==4);
-    REQUIRE(line_x.get_p2().x==7);
-    REQUIRE(line_x.get_p2().y==6);
-
-    line_y.Expand();
-    REQUIRE(line_y.get_p1().x==0);
-    REQUIRE(line_y.get_p1().y==1);
-    REQUIRE(line_y.get_p2().x==2);
-    REQUIRE(line_y.get_p2().y==5);
-
-    point.Expand();
-    REQUIRE(point.get_p1().x==0);
-    REQUIRE(point.get_p1().y==4);
-    REQUIRE(point.get_p2().x==2);
-    REQUIRE(point.get_p2().y==6);
+  SECTION("Using ints"){
+    REQUIRE(int_map->Count(1,5)==7);
   }
-  r=Rectangle(Point{-1,-3},Point{1,5});
-  line_x=Rectangle(Point{1,5},Point{6,5});
-  line_y=Rectangle(Point{1,2},Point{1,4});
-  point=Rectangle(Point{1,5},Point{1,5});
-
-  // // moves the bottom left coordinate up one and to the right one
-  // // moves the upper right coordinate down one and to the left one
-  SECTION( "Checking the shrink" ){
-    r=Rectangle(Point{1,5},Point{-1,-3});
-    line_x=Rectangle(Point{6,5},Point{1,5});
-    line_y=Rectangle(Point{1,4},Point{1,2});
-    point=Rectangle(Point{1,5},Point{1,5});
-    r.Shrink();
-    REQUIRE(r.get_p1().x==0);
-    REQUIRE(r.get_p1().y==-2);
-    REQUIRE(r.get_p2().x==0);
-    REQUIRE(r.get_p2().y==4);
-
-    line_x.Shrink();
-    REQUIRE(line_x.get_p1().x==1);
-    REQUIRE(line_x.get_p1().y==5);
-    REQUIRE(line_x.get_p2().x==6);
-    REQUIRE(line_x.get_p2().y==5);
-
-    line_y.Shrink();
-    REQUIRE(line_y.get_p1().x==1);
-    REQUIRE(line_y.get_p1().y==2);
-    REQUIRE(line_y.get_p2().x==1);
-    REQUIRE(line_y.get_p2().y==4);
-
-    point.Shrink();
-    REQUIRE(point.get_p1().x==1);
-    REQUIRE(point.get_p1().y==5);
-    REQUIRE(point.get_p2().x==1);
-    REQUIRE(point.get_p2().y==5);
+  SECTION("Using strings"){
+    REQUIRE(animals_map->Count("bird", "dog")==3);
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->Count('a','c')==4);
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->Count(1.0,5.0)==7);
   }
 
+}
+
+TEST_CASE ( "Remove a key") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
+
+  int_map->Remove(1);
+  animals_map->Remove("cat");
+  char_map->Remove('a');
+  double_map->Remove(1.0);
+  bool_map->Remove(true);
+
+  SECTION("Using ints"){
+    REQUIRE(int_map->Count()==5);
+  }
+  SECTION("Using strings"){
+    REQUIRE(animals_map->Count()==3);
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->Count()==3);
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->Count()==5);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Count()==2);
+  }
+
+}
+
+
+TEST_CASE ( "Increment a key") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
+
+  int_map->Increment(1);
+  animals_map->Increment("zebra",3);
+  char_map->Increment('a');
+  double_map->Increment(1.0,2);
+  bool_map->Increment(true,5);
+
+  SECTION("Using ints"){
+    REQUIRE(int_map->Count()==9);
+  }
+  SECTION("Using strings"){
+    REQUIRE(animals_map->Count()==8);
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->Count()==7);
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->Count()==10);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Count()==10);
+  }
+}
+
+
+TEST_CASE ( "Decrement a key") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
+
+  int_map->Decrement(1);
+  animals_map->Decrement("bird");
+  char_map->Decrement('a');
+  double_map->Decrement(1.0,2);
+  bool_map->Decrement(true,5);
+
+  SECTION("Using ints"){
+    REQUIRE(int_map->Count()==7);
+  }
+  SECTION("Using strings"){
+    REQUIRE(animals_map->Count("bird")==0);
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->Count()==5);
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->Count()==6);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Count()==2);
+  }
+}
+
+TEST_CASE ( "Find most common key") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
+
+  std::vector<int> v{1,3};
+
+  SECTION("Using ints"){
+    REQUIRE(int_map->MostCommon(2)==v);
+  }
+  SECTION("Using strings"){
+    REQUIRE(animals_map->MostCommon()=="cat");
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->MostCommon()=='a');
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->MostCommon()==1.0);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->MostCommon()==true);
+  }
+}
+
+
+TEST_CASE ( "Find least common key") {
+  Counter <int> * int_map= new Counter(ints);
+  Counter <std::string> * animals_map= new Counter(animals);
+  Counter <char> * char_map= new Counter(chars);
+  Counter <double> * double_map= new Counter(dub);
+  Counter <bool> * bool_map= new Counter(bools);
+
+  std::vector<bool> v{false};
+
+  SECTION("Using ints"){
+    REQUIRE(int_map->LeastCommon()==2);
+  }
+  SECTION("Using strings"){
+    REQUIRE(animals_map->LeastCommon()=="bird");
+  }
+  SECTION("Using char"){
+    REQUIRE(char_map->LeastCommon()=='b');
+  }
+  SECTION("Using double"){
+    REQUIRE(double_map->LeastCommon()==2.0);
+  }
+  SECTION("Using bool"){
+    REQUIRE(bool_map->LeastCommon(1)==v);
+  }
+}
+
+TEST_CASE ( "Normalized") {
+  Counter <bool> * bool_map= new Counter(bools);
+
+  std::vector<bool> v{false};
+  std::map<bool, double> bool_dub_map;
+  bool_dub_map[true]=0.6;
+  bool_dub_map[false]=0.4;
+
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Normalized()==bool_dub_map);
+  }
+}
+
+
+TEST_CASE ( "Keys") {
+  Counter <bool> * bool_map= new Counter(bools);
+  Counter <int> * int_map= new Counter(ints);
+
+  std::set<bool> bool_set {true,false};
+  std::set<int> int_set {1,2,3,4,5};
+
+  SECTION("Using int"){
+    REQUIRE(int_map->Keys()==int_set);
+  }
+
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Keys()==bool_set);
+  }
+}
+
+TEST_CASE ( "Values") {
+  Counter <bool> * bool_map= new Counter(bools);
+  Counter <int> * int_map= new Counter(ints);
+
+  std::vector<int> bool_vec {2,3};
+  std::vector<int> int_vec {3,1,2,1,1};
+
+  SECTION("Using int"){
+    REQUIRE(int_map->Values()==int_vec);
+  }
+
+  SECTION("Using bool"){
+    REQUIRE(bool_map->Values()==bool_vec);
+  }
 }

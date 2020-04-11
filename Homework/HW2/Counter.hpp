@@ -1,9 +1,14 @@
+#ifndef COUNTER_H
+#define COUNTER_H
+
+
 #include <iostream>
 #include <vector>
 #include<iterator> // for iterators
 #include <algorithm>
 #include <map>
 #include <set>
+#include <stdexcept>
 
 template <class T>
 class Counter {
@@ -12,7 +17,7 @@ public:
   Counter()=default;
 
   //initialize a Counter<T> appropriately from a vector or array that contains type T
-  Counter(std::vector<T> vals);
+  Counter(std::vector<T> const vals);
 
   //access the total of all counts so far
   int Count();
@@ -20,10 +25,10 @@ public:
   //access the count associated with any object T, even for values of T that have not been counted
   int Count(T key);
 
-  // // access the total of all counts for objects T given a
-  // // certain range (an inclusive minimum T and an
-  // // exclusive maximum T element)
-  // int Count(T min, T max);
+  // access the total of all counts for objects T given a
+  // certain range (an inclusive minimum T and an
+  // exclusive maximum T element)
+  int Count(T min, T max);
 
   // remove all counts of an object T from the Counter
   void Remove(T key);
@@ -32,13 +37,13 @@ public:
   void Increment(T key);
 
   // increment the count of an object T by n
-  void Increment(T key, int n);
+  void Increment(T key, const int n);
 
   // decrement the count of an object T by one
   void Decrement(T key);
 
   // decrement the count of an object T by n
-  void Decrement(T key, int n);
+  void Decrement(T key, const int n);
 
   // get the most commonly occurring object of type T
   // (the object with the highest count)
@@ -49,7 +54,7 @@ public:
   // get the n most commonly occurring objects of type
   // T. If the Counter is empty, this method should
   // return a vector of size 0.
-  std::vector<T> MostCommon(int n);
+  std::vector<T> MostCommon(const int n);
 
   // get the least commonly occurring object of type T
   // (the object with the highest count)
@@ -60,7 +65,7 @@ public:
   // get the n least commonly occurring objects of type
   // T. If the Counter is empty, this method should
   // return a vector of size 0.
-  std::vector<T> LeastCommon(int n);
+  std::vector<T> LeastCommon(const int n);
 
 
   // access normalized weights for all objects of type T
@@ -68,10 +73,10 @@ public:
   std::map<T, double> Normalized();
 
   // access the set of all keys in the Counter
-  std::set<T> Keys();
+  const std::set<T> Keys();
 
   // access the collection of all values in the Counter
-  std::vector<int> Values();
+  const std::vector<int> Values();
 
 
 
@@ -85,8 +90,13 @@ private:
 };
 // Class Definition -------
 
+/**
+Counter Constructor
+Parameters: Takes in a vector of some type T and inserts it into map_  as a pair
+Any values seen multiple times will increment the value.
+*/
 template<class T>
-Counter<T>::Counter(std::vector<T> vals){
+Counter<T>::Counter(std::vector<T>  const vals){
   int vals_size= vals.size();
 
   for(int i=0; i<vals_size; i++){
@@ -94,7 +104,7 @@ Counter<T>::Counter(std::vector<T> vals){
 
 		// key already present in the map
 		if (it != map_.end()) {
-			it->second++;	// increment map's value for key 'c'
+			it->second++;
 		}
 		// key not found
 		else {
@@ -103,57 +113,116 @@ Counter<T>::Counter(std::vector<T> vals){
   }
 }
 
+
+/**
+Count(T key)
+Counts the number of occurences of a certain key
+*/
+template<class T>
+int Counter<T>::Count(T key){
+  typename std::map<T,int>::iterator it = map_.find(key);
+  if(it==map_.end()){ // If key is not in map return 0 since no instance
+    return 0;
+  }
+
+  return map_.find(key)->second;
+}
+
+/**
+Count()
+Counts the number of occurences for all keys
+*/
 template<class T>
 int Counter<T>::Count(){
   int val_count=0;
-  // Need typename so compiler understands what type it is
   for (typename std::map<T,int>::iterator it = map_.begin(); it != map_.end(); ++it) {
     val_count+=it->second;
-    //retval.push_back(element.first);
   }
   return val_count;
 }
 
+/**
+Count(T min, T max)
+Counts the number of occurences for between min and maximum.
+Note inclusive min and  exclusive max
+*/
 template<class T>
-int Counter<T>::Count(T key){
-  return map_.find(key)->second;
+int Counter<T>::Count(T min, T max){
+  int val_count=0;
+  // Need typename so compiler understands what type it is
+  for (typename std::map<T,int>::iterator it = map_.begin(); it != map_.end(); ++it) {
+    if (it->first >= min && it->first < max){
+      val_count+=it->second;
+    }
+  }
+  return val_count;
 }
-
-// template<class T>
-// int Counter<T>::Count(T min, T max){
-//
-//   return map_.find(Key)->second;
-// }
 
 template<class T>
 void Counter<T>::Remove(T key){
   map_.erase(key);
 }
 
+
+/**
+Increment either increments by 1 or by specified n
+The Increment(key) calls on the other definition to
+make error fixing easier
+*/
+
 template<class T>
 void Counter<T>::Increment(T key){
-  map_.find(key)->second++;
+  //map_.find(key)->second++;
+  this->Increment(key,1);
 }
 
 template<class T>
-void Counter<T>::Increment(T key, int n){
-  map_.find(key)->second+=n;
+void Counter<T>::Increment(T key, const int n){
+  typename std::map<T,int>::iterator it = map_.find(key);
+  if(it==map_.end()){ //If not in map add it to map
+    map_.insert(std::pair(key, n));
+  }
+  else{
+  it->second+=n;
+  }
 }
 
+/**
+Decrement either decrements by 1 or by specified n
+The Decrement(key) calls on the other definition to
+make error fixing easier
+*/
 template<class T>
 void Counter<T>::Decrement(T key){
-  map_.find(key)->second--;
+  // map_.find(key)->second--;
+  this->Decrement(key,1);
 }
 
 template<class T>
-void Counter<T>::Decrement(T key, int n){
-  map_.find(key)->second-=n;
+void Counter<T>::Decrement(T key, const int n){
+  typename std::map<T,int>::iterator it = map_.find(key);
+  if(it==map_.end()){
+    return;
+  }
+  it->second-=n;
+
+  if(it->second<=0){ //If value goes to zero or lower delete from map
+    map_.erase(key);
+  }
 }
 
 
-//*********ADD THE DOMAIN ERROR******************
+
+/**
+MostCommon
+Finds the most frequent/common occurences of a element
+*/
+
 template<class T>
 T Counter<T>::MostCommon(){
+  if(map_.empty()){
+    throw std::domain_error("Nothing inside map");
+  }
   int compare=0;
   T key;
   for (typename std::map<T,int>::iterator it = map_.begin(); it != map_.end(); ++it) {
@@ -165,9 +234,8 @@ T Counter<T>::MostCommon(){
   return key;
 }
 
-//*********ADD THE DOMAIN ERROR******************
 template<class T>
-std::vector<T> Counter<T>::MostCommon(int n){
+std::vector<T> Counter<T>::MostCommon(const int n){
   std::vector< std::pair<int,T> > sorted_map_vec;
   std::vector<T> most_comm_keys;
 
@@ -182,7 +250,7 @@ std::vector<T> Counter<T>::MostCommon(int n){
 }
 
 
-//*********ADD THE DOMAIN ERROR******************
+
 template<class T>
 T Counter<T>::LeastCommon(){
   std::vector< std::pair<int,T> > sorted_map_vec;
@@ -195,9 +263,9 @@ T Counter<T>::LeastCommon(){
   return sorted_map_vec[0].second;
 }
 
-//*********ADD THE DOMAIN ERROR******************
+
 template<class T>
-std::vector<T> Counter<T>::LeastCommon(int n){
+std::vector<T> Counter<T>::LeastCommon(const int n){
   std::vector< std::pair<int,T> > sorted_map_vec;
   std::vector<T> most_comm_keys;
 
@@ -224,16 +292,17 @@ std::map<T, double> Counter<T>::Normalized(){
 
 
 template<class T>
-std::set<T> Counter<T>::Keys(){
+const std::set<T> Counter<T>::Keys(){
   std::set<T> keys;
   for (typename std::map<T,int>::iterator it = map_.begin(); it != map_.end(); ++it) {
     keys.insert(it->first);
   }
+  return keys;
 }
 
 
 template<class T>
-std::vector<int> Counter<T>::Values(){
+const std::vector<int> Counter<T>::Values(){
   std::vector<int> vals;
   for (typename std::map<T,int>::iterator it = map_.begin(); it != map_.end(); ++it) {
     vals.push_back(it->second);
@@ -241,16 +310,16 @@ std::vector<int> Counter<T>::Values(){
   return vals;
 }
 
+template <typename U>
+std::ostream& operator<<(std::ostream& os, const Counter<U> &n){
+  int map_size= n.map_.size();
+  os << "{";
+  for (typename std::pair<U,int> it: n.map_) { // Syntatical sugar For each loop
 
+    os <<it.first <<":"<<it.second<<",";
+  }
+  os << "}"<<'\n';
+  return os;
+}
 
-
-
-// then, when implementing
-// template <typename U>
-// std::ostream& operator<<(std::ostream& os, const Counter<U> &n) {
-//   std::cout << "{" <<;
-//   for(typename std::map<U,int>::iterator it = n.map_.begin(); it != n.map_.end(); ++it){
-//     std::cout <<it << '\n';
-//   }
-//   std::cout << "}" << '\n';
-// }
+#endif

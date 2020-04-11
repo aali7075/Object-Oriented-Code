@@ -1,20 +1,15 @@
 CXX = g++
+CXXTESTFLAGS = --coverage #for unit testing
 CXXFLAGS = -std=c++17 -Wall
 
-all: main
+all: main test
 
 clean:
-	rm test main
-
-# Counter.o: Counter.hpp
-# 	$(CXX) $(CXXFLAGS) -c Counter.hpp
+	rm main test
 
 main: main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp -o main
 
 
-# test: Counter.o test.cpp
-# 	$(CXX) $(CXXFLAGS) test.cpp Counter.o -o test
-#
-# cov: Rectangle.o test.cpp
-# 	$(CXX) $(CXXFLAGS) $(CXXTESTFLAGS) test.cpp Counter.o -o test
+test: test.cpp
+	$(CXX) $(CXXFLAGS) test.cpp -o test
